@@ -18,5 +18,9 @@ repositories {
 }
 
 dependencies {
-    // твои зависимости
+    testImplementation("org.testng:testng:7.4.0")  // твои зависимости
+}
+
+test {
+    useTestNG()
 }
