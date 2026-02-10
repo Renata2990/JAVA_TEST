@@ -1,6 +1,7 @@
 package my.education;
 
 import my.pockege.Rectangle;
+import my.pockege.Square;
 
 public class MySecondProgram {
   public static void main(String[] args) {
