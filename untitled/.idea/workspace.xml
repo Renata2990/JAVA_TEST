@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a959eaf5-543c-4fa0-bba5-94e7222f7244" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../sandbox/src/test/java/my/education/TestPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sandbox/src/test/java/my/education/MySecondProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sandbox/src/test/java/my/education/MySecondProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sandbox/src/test/java/my/education/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sandbox/src/test/java/my/education/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sandbox/src/test/java/my/pockege/SquareTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sandbox/src/test/java/my/pockege/SquareTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a959eaf5-543c-4fa0-bba5-94e7222f7244" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
