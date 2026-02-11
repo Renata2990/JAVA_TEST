@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("org.testng:testng:7.4.0")
+    //implementation("org.testng:testng:7.4.0")
+    //testImplementation("org.seleniumhq.selenium:selenium-java:3.14.")
+    implementation("org.seleniumhq.selenium:selenium-java:4.14.0")
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.5.0'
+
+
+    // Apache Commons IO
+    implementation 'commons-io:commons-io:2.12.0'
+
+    test {
+        useTestNG()                   // Важно! Иначе Gradle не увидит тесты
+        // failOnNoTests = false       // можно включить, чтобы сборка не падала, если тестов нет
+    }
+
+}
