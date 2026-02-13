@@ -21,15 +21,14 @@ public class GroupCreationTests {
   public void setUp() throws Exception {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    js = (JavascriptExecutor) wd;
-  }
-
-  @Test
-  public void testGroupCreation() throws Exception {
     wd.get("http://localhost/addressbook/addressbook/group.php?selected%5B%5D=2&selected%5B%5D=1&selected%5B%5D=3&delete=Delete+group%28s%29");
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.xpath("//input[@value='Login']")).click();
+  }
+
+  @Test
+  public void testGroupCreation() throws Exception {
     wd.findElement(By.linkText("groups")).click();
     wd.get("http://localhost/addressbook/addressbook/group.php");
     wd.findElement(By.name("new")).click();
