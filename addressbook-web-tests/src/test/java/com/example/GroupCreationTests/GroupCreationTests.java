@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 import java.time.Duration;
 
 public class GroupCreationTests {
-  private WebDriver wd;
+  private WebDriver wd;  // wd переменная, являющаяся атрибутом объекта типа GroupCreationTests
 //  private String baseUrl;
 //  private boolean acceptNextAlert = true;
 //  private StringBuffer verificationErrors = new StringBuffer();
@@ -21,6 +21,10 @@ public class GroupCreationTests {
   public void setUp() throws Exception {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    login();  // вызов метода
+  }
+
+  private void login() {
     wd.get("http://localhost/addressbook/addressbook/group.php?selected%5B%5D=2&selected%5B%5D=1&selected%5B%5D=3&delete=Delete+group%28s%29");
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("pass")).click();
@@ -29,9 +33,29 @@ public class GroupCreationTests {
 
   @Test
   public void testGroupCreation() throws Exception {
-    wd.findElement(By.linkText("groups")).click();
-    wd.get("http://localhost/addressbook/addressbook/group.php");
-    wd.findElement(By.name("new")).click();
+    // рефакторинг тестового метода
+    gotoGroupPage();
+    openPage();
+    initGroupCreation();
+    fillGroupForm();
+    submitGroupCreation();
+    returnToGroupPage();
+    logout();
+  }
+
+  private void logout() {
+    wd.findElement(By.linkText("Logout")).click();
+  }
+
+  private void returnToGroupPage() {
+    wd.findElement(By.linkText("group page")).click();
+  }
+
+  private void submitGroupCreation() {
+    wd.findElement(By.name("submit")).click();
+  }
+
+  private void fillGroupForm() {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys("test1");
@@ -40,9 +64,18 @@ public class GroupCreationTests {
     wd.findElement(By.name("group_header")).sendKeys("test2");
     wd.findElement(By.name("group_footer")).clear();
     wd.findElement(By.name("group_footer")).sendKeys("test3");
-    wd.findElement(By.name("submit")).click();
-    wd.findElement(By.linkText("group page")).click();
-    wd.findElement(By.linkText("Logout")).click();
+  }
+
+  private void initGroupCreation() {
+    wd.findElement(By.name("new")).click();
+  }
+
+  private void openPage() {
+    wd.get("http://localhost/addressbook/addressbook/group.php");
+  }
+
+  private void gotoGroupPage() {
+    wd.findElement(By.linkText("groups")).click();
   }
 
   @AfterMethod(alwaysRun = true)
