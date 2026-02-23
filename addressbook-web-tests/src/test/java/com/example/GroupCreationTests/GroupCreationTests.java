@@ -2,13 +2,10 @@ package com.example.GroupCreationTests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
-import java.util.concurrent.TimeUnit;
 
-import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class GroupCreationTests {
   private WebDriver wd;  // wd переменная, являющаяся атрибутом объекта типа GroupCreationTests
@@ -21,13 +18,16 @@ public class GroupCreationTests {
   public void setUp() throws Exception {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    login();  // вызов метода
+    login("admin", "secret");  // вызов метода
   }
 
-  private void login() {
+  private void login(String username, String password) {
     wd.get("http://localhost/addressbook/addressbook/group.php?selected%5B%5D=2&selected%5B%5D=1&selected%5B%5D=3&delete=Delete+group%28s%29");
     wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("pass")).click();
+    wd.findElement(By.name("user")).click();
+    wd.findElement(By.name("user")).sendKeys(username);
+    wd.findElement(By.name("pass")).clear();
+    wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
@@ -37,7 +37,7 @@ public class GroupCreationTests {
     gotoGroupPage();
     openPage();
     initGroupCreation();
-    fillGroupForm();
+    fillGroupForm(new GroupData("test1", "test2", "test3"));
     submitGroupCreation();
     returnToGroupPage();
     logout();
@@ -55,15 +55,15 @@ public class GroupCreationTests {
     wd.findElement(By.name("submit")).click();
   }
 
-  private void fillGroupForm() {
+  private void fillGroupForm(GroupData groupData) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys("test1");
+    wd.findElement(By.name("group_name")).sendKeys(groupData.name());
     wd.findElement(By.name("group_header")).click();
     wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys("test2");
+    wd.findElement(By.name("group_header")).sendKeys(groupData.header());
     wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys("test3");
+    wd.findElement(By.name("group_footer")).sendKeys(groupData.footer());
   }
 
   private void initGroupCreation() {
